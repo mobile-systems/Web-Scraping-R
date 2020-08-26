@@ -32,7 +32,9 @@ for(i in 1:11) {
   }
 }
 
-write.csv(df, "mcoc.csv",  row.names = FALSE)
+arquivo = "mcoc.csv"
+
+write.csv(df, paste0(sub('\\..*', '', arquivo), format(Sys.time(),'_%Y%m%d_%H%M%S'), '.csv'),  row.names = FALSE)
 
 
 
