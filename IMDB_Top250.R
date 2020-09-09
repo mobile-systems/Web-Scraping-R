@@ -40,4 +40,4 @@ top250 <- data.frame(movie.name, movie.cast, movie.link,year,votes,rating)
 
 arquivo = "imdb_top250.csv"
 
-write.csv(top250, paste0(sub('\\..*', '', arquivo), format(Sys.time(),'_%Y%m%d_%H%M%S'), '.csv'),  row.names = FALSE)
+write.csv(top250, paste0(sub('\\..*', '', arquivo), format(Sys.time(),'_%Y%m%d_%H%M%S'), '.csv'),  row.names = FALSE, fileEncoding = "UTF-8")

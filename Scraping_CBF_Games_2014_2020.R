@@ -4,7 +4,7 @@ library(glue)
 
 # df <- as.data.frame(NULL)
 
-for(i in 2014:2019) {
+for(i in 2014:2020) {
   
 url <- glue("https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-a/{i}")
 
@@ -50,7 +50,7 @@ df <- if( i == 2014)
 
 }
 
-write.csv(df, "Brasileirao_2014_2019-b.csv", col.names = TRUE, row.names = FALSE, sep = ",")
+write.csv(df, "Serie_A.csv", col.names = TRUE, row.names = FALSE, sep = ",")
 
 
 
