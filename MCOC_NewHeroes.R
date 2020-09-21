@@ -8,6 +8,8 @@ for(i in 1:11) {
   
   url <- glue("https://playcontestofchampions.com/category/whats-new/new-characters/page/{i}/")
 
+  print(paste('Web scraping', url))
+
   resultados <- url %>% 
     xml2::read_html() %>% 
       html_nodes(".o-blog__item--articles")
@@ -32,10 +34,10 @@ for(i in 1:11) {
   }
 }
 
-arquivo = "mcoc.csv"
+arquivo <- paste0(sub('\\..*', '', "mcoc.csv"), format(Sys.time(),'_%Y%m%d_%H%M%S'), '.csv')
 
-write.csv(df, paste0(sub('\\..*', '', arquivo), format(Sys.time(),'_%Y%m%d_%H%M%S'), '.csv'),  row.names = FALSE)
+write.csv(df, arquivo, row.names = FALSE, fileEncoding = "UTF-8")
 
-
+print(paste(arquivo, "criado!"))
 
 
