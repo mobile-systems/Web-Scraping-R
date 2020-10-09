@@ -1,8 +1,13 @@
 #install.packages("stringr", repos='http://cran.us.r-project.org')
 #install.packages("rvest", repos='http://cran.us.r-project.org')
+#install.packages("RCurl", repos='http://cran.us.r-project.org')
+#install.packages("base64enc", repos='http://cran.us.r-project.org')
 library(stringr)
 library(rvest)
 library(glue)
+library(RCurl)
+#library(base64enc)
+
 
 web_url =  "https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-{serie}/{a}"  
 
@@ -55,6 +60,19 @@ myFunction<-function(serie, anoIni, anoFim) {
   # write.csv(df, paste0(sub('\\..*', '', arquivo), format(Sys.time(),'_%Y%m%d_%H%M%S'), '.csv'), row.names = FALSE)
 
   print(paste(arquivo, "criado!"))
+
+  ftp <- Sys.getenv("futbr-webapi-host")
+  usr <- Sys.getenv("futbr-webapi-user")
+  pwd <- Sys.getenv("futbr-webapi-password")
+
+  dir <- glue("site/wwwroot/db/{arquivo}")
+
+  ftpUpload(what = arquivo,
+        to = glue(ftp),
+        verbose = TRUE,
+        userpwd = glue("{usr}:{pwd}"))
+
+  print(paste(arquivo, " subido no FTP!"))
 }
 
 myFunction('a', 2020, 2020)
