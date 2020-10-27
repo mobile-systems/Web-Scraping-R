@@ -1,13 +1,10 @@
 #install.packages("stringr", repos='http://cran.us.r-project.org')
 #install.packages("rvest", repos='http://cran.us.r-project.org')
 #install.packages("RCurl", repos='http://cran.us.r-project.org')
-#install.packages("base64enc", repos='http://cran.us.r-project.org')
 library(stringr)
 library(rvest)
 library(glue)
 library(RCurl)
-#library(base64enc)
-
 
 web_url =  "https://www.cbf.com.br/futebol-brasileiro/competicoes/campeonato-brasileiro-serie-{serie}/{a}"  
 
@@ -69,10 +66,10 @@ myFunction<-function(serie, anoIni, anoFim) {
 
   ftpUpload(what = arquivo,
         to = glue(ftp),
-        verbose = TRUE,
+        verbose = FALSE,
         userpwd = glue("{usr}:{pwd}"))
 
-  print(paste(arquivo, " subido no FTP!"))
+  print(paste(arquivo, "subido no FTP!"))
 }
 
 myFunction('a', 2020, 2020)

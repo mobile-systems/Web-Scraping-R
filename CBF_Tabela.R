@@ -14,6 +14,8 @@ myFunction<-function(serie, anoIni, anoFim) {
 
     url <- glue(web_url)
 
+    print(paste('Web scraping', url))
+
     resultados <- url %>% 
       xml2::read_html() %>% 
       html_nodes(".col-lg-9")
@@ -75,11 +77,10 @@ myFunction<-function(serie, anoIni, anoFim) {
 
   ftpUpload(what = arquivo,
         to = glue(ftp),
-        verbose = TRUE,
+        verbose = FALSE,
         userpwd = glue("{usr}:{pwd}"))
 
-  print(paste(arquivo, " subido no FTP!"))
-
+  print(paste(arquivo, "subido no FTP!"))
 }
 
 myFunction('a', 2020, 2020)
