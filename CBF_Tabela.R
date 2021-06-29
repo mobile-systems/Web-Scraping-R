@@ -83,5 +83,5 @@ myFunction<-function(serie, anoIni, anoFim) {
   print(paste(arquivo, "subido no FTP!"))
 }
 
-myFunction('a', 2020, 2020)
-myFunction('b', 2020, 2020)
+myFunction('a', 2021, 2021)
+myFunction('b', 2021, 2021)
